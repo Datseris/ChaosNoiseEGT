@@ -18,7 +18,7 @@ DeterministicPCPConfig(β, m) = DeterministicPCPConfig(β, m, zeros(eltype(m), s
 DeterministicPCPConfig(β, m, fd) = DeterministicPCPConfig(β, m, zeros(eltype(m), size(m, 1)), fd)
 
 """
-        dynamic_rule_PCP!(du, u, p::DeterministicPCPConfig, t)
+    dynamic_rule_PCP!(du, u, p::DeterministicPCPConfig, t)
 
 Dynamic rule of the deterministic system.
 General deterministic description of the Pairwise Comparison Process

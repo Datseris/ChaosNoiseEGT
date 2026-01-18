@@ -30,17 +30,17 @@ pushfirst!(systems, pcpds)
         # TODO: Crucial!!! We must scale the integration time with beta!
         # At least for very small beta the integration time of only 25,000 units is not enough!!!
         τ = 2/β # TODO: should we use this?
-        τ = 1.0 # for now I ignore this timescale
+        # τ = 1.0 # for now I ignore this timescale
         # Execute in parallel the estimation of various quantifiers
         λs[j] = lyapunovspectrum(ds, 20_000; Δt = τ)
         X, tvec = trajectory(ds, 25000.0*τ; Δt = τ)
         fractal_dim_corr[j] = grassberger_proccacia_dim(X; show_progress = false)
-        fractal_dim_takens[j] = takens_best_estimate_dim(X, 0.05)
+        # fractal_dim_takens[j] = takens_best_estimate_dim(X, 0.05)
         σs[j] = std(X[:, 1])
         X, tvec = trajectory(ds, 2500.0*τ; Δt = 0.1τ)
         x = X[:, 1]
-        sample_entropy[j] = complexity_normalized(SampleEntropy(x), x)
-        permutation_entropy[j] = entropy_normalized(OrdinalPatterns(m = 4), x)
+        # sample_entropy[j] = complexity_normalized(SampleEntropy(x), x)
+        # permutation_entropy[j] = entropy_normalized(OrdinalPatterns(m = 4), x)
         lempel_ziv[j] = lempel_ziv_complexity(x)
     end
 end
@@ -72,4 +72,4 @@ for ax in axs; ax.xscale = log10; end
 
 display(fig)
 
-wsave(plotsdir("gd", "deterministic_quantifiers"), fig)
+# wsave(plotsdir("gd", "deterministic_quantifiers"), fig)

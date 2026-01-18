@@ -11,7 +11,7 @@ include(srcdir("PayoffMatrix.jl"))
 #                      PAIRWISE COMPARISON PROCESS functions                   #
 ################################################################################
 
-""" 
+"""
     picktype_randomly(num_types) → Int64
 Randomly picks a type among the different types present in the population
 Generates and returns a random number from the indexable collection `1:num_types`
@@ -71,7 +71,7 @@ Updates the `amounts` vector after one replacement decision
 """
 function replacement_decision_update(Player_i,Player_j,amounts,probability,populationsize)
     step_size = 1.0/populationsize
-    
+
     #Random number used to take the replacement decision
     randomnumber_decision = rand()
 
@@ -181,7 +181,7 @@ It sets the amount of time steps, such that the number of generations is fixed f
 all population sizes
 The constant factor is approximated, such that the time steps are enough to visualise
 the attractor and for the running time of the quantifiers doesn't explode
-    Outlier cases B=0 or B>=1000 
+    Outlier cases B=0 or B>=1000
 """
 function set_timesteps_others(populationsize, beta)
     if typeof(populationsize) == String
