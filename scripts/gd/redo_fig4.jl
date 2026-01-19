@@ -109,7 +109,7 @@ using Statistics
         push!(sigma, std(x))
         push!(lempel_ziv, lempel_ziv_complexity(x))
     end
-    data = @strdict sigma fractal_dim lempel_ziv maxt
+    data = @strdict sigma fractal_dim lempel_ziv maxt trajectories
     wsave(datadir("gd", "stochastic", savename("stochastic", @dict(β, N), "jld2")), data)
 end
 
